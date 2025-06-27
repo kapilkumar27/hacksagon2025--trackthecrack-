@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <aside>
+    </aside>
+
+    <main>
+        <div class="container">
+            <h1>Report a Hazard</h1>
+            <!--Report form-->
+            <div class="report-wrapper">
+                <form class="report-form" action="#" method="post">
+                    <label for="location">Location :</label><br>
+                    <input type="search" id="location" name="location" required>
+                    <br><br>
+
+                    <label for="hazard">Hazard Type :</label><br>
+                    <select name="hazard" id="hazard">
+                        <option>Select...</option>
+                        <option value="potholes">Potholes</option>
+                        <option value="manholes">Broken/ Missing manholes covers</option>
+                        <option value="damaged roads">Damaged Road Surface</option>
+                        <option value="construction">Unfinished Construction Work</option>
+                        <option value="speed bumps">High Speed Bumps</option>
+                        <option value="dugup roads">Open Trenches/Dug-up Road</option>
+                        <option value="other">Other...</option>
+                    </select>
+                    <br><br>
+
+                    <label for="description">Description :</label><br>
+                    <textarea name="description" id="description" rows="5" cols="30"></textarea>
+                    <br><br>
+
+                    <button>Upload Photo</button>
+                    <br><br>
+                    <button>Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
