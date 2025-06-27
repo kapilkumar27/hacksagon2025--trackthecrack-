@@ -1,0 +1,88 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nunito", Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    background: #eaefef;
+    color: #333446;
+    display: grid;
+    grid-template-columns: auto;
+}
+
+main {
+    padding: 30px;
+    margin-left: 240px;
+    max-width: 1000px;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 100%;
+    width: 240px;
+    background: #b8cfce;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.sidebar-header img {
+    width: 200px;
+    border-radius: 50%;
+}
+.sider-header{
+    display: flex;
+    justify-content: center;
+}
+.sidebar svg {
+    fill: #333446;
+}
+
+ul li a {
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+    color: #333446;
+    font-weight: 700;
+    padding: 15px 5px;
+    white-space: nowrap;
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+    margin-top: 15px;
+}
+ul li a:hover {
+    background: #eaefef;
+    color: #242530;
+    border-radius: 20px;
+}
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 15px;
+}
+.sidebar-footer a{
+    display: flex;
+    align-items: center;
+    color: #333446;
+    font-weight: 800;
+    font-size: larger;
+    padding: 15px 5px;
+    white-space: nowrap;
+    text-decoration: none;
+    gap: 0 20px;
+}
+.sidebar-footer svg{
+    width: 30px;
+    height: 30px;
+    margin-right: 0px;
+    vertical-align: middle;
+}
