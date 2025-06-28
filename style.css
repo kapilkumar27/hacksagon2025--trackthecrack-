@@ -19,7 +19,6 @@ body{
 main {
     padding: 30px;
     margin-left: 240px;
-    max-width: 1000px;
     box-sizing: border-box;
 }
 
@@ -60,11 +59,19 @@ ul {
     list-style: none;
     margin-top: 0px;
 }
-ul li a:hover {
+
+ul li a:hover, .sidebar-footer a:hover {
     background: #eaefef;
     color: #242530;
     border-radius: 20px;
 }
+
+ul li a:hover svg,
+.sidebar-footer a:hover svg {
+    fill: #242530;
+    transition: fill 0.2s;
+}
+
 .sidebar-footer {
     margin-top: auto;
     padding-top: 15px;
