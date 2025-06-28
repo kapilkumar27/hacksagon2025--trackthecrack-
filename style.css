@@ -34,7 +34,7 @@ main {
     justify-content: space-between;
 }
 .sidebar-header img {
-    width: 120px;
+    width: 137px;
     border-radius: 100%;
 }
 .sider-header{
@@ -93,3 +93,46 @@ ul li a:hover svg,
     margin-right: 0px;
     vertical-align: middle;
 }
+
+#toggle-btn {
+    margin-left: auto;
+    padding: 0em;
+    border: none;
+    border-radius: .5em;
+    background: none;
+    cursor: pointer;
+}
+#toggle-btn svg {
+    width: 30px;
+    height: 30px;
+    margin-right: 0px;
+    vertical-align: middle;
+}
+#toggle-btn:hover svg {
+    background: #eaefef;
+    fill: #242530;
+    border-radius: 10px;
+}
+
+.sidebar.collapsed {
+    width: 80px;
+}
+
+.sidebar.collapsed span {
+    display: none;
+}
+
+.sidebar.collapsed .sidebar-header img {
+    width: 40px;
+    margin: auto;
+}
+
+.sidebar.collapsed li {
+    text-align: center;
+}
+
+.sidebar.collapsed #toggle-btn {
+    margin-left: 0;
+    justify-content: center;
+}
+
