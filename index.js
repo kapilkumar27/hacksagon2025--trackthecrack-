@@ -27,10 +27,12 @@ function displayReports(reports) {
         reportCard.className = 'report-card';
 
         reportCard.innerHTML = `
+        <div class="report-content">
             <h3>${report.hazardType}</h3>
             <p><strong>Location:</strong> ${report.location}</p>
             <p><strong>Description:</strong> ${report.description}</p>
-            ${report.imageUrl ? `<img src="${report.imageUrl}" alt="Hazard Image" style="max-width: 300px; max-height: 200px;">` : ''}
+        </div>
+            ${report.imageUrl ? `<img class="report-image" src="${report.imageUrl}" alt="Hazard Image">` : ''}
             <hr>
         `;
 
