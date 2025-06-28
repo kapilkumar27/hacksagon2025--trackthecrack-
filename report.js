@@ -61,7 +61,9 @@ function submitReport(location, hazard, description, imageUrl) {
     location: location,
     hazardType: hazard,
     description: description,
-    imageUrl: imageUrl || null // store the cloudinary url if available or null
+    imageUrl: imageUrl || null, // store the cloudinary url if available or null
+    "upvotes": 0,
+    "downvotes": 0
   })
   .then(() => {
     alert('Report submitted successfully!');
