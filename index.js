@@ -1,5 +1,5 @@
-//firebase configuration
- const firebaseConfig = {
+// ==== Firebase configuration ====
+const firebaseConfig = {
     apiKey: "AIzaSyAzYLcn7cS4zX198-QCOMqwfPuIOUCwNsQ",
     authDomain: "track-the-crack.firebaseapp.com",
     databaseURL: "https://track-the-crack-default-rtdb.firebaseio.com",
@@ -8,15 +8,14 @@
     messagingSenderId: "785320645814",
     appId: "1:785320645814:web:bdc010588b7992b1864217",
     measurementId: "G-NMD1XKZGZH"
-  };
+};
 
-//starting the firebase
+// Start Firebase
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
-
-// Reference to the reports in Firebase
 const reportsRef = database.ref('hazardReports');
 
+// Voting function
 function voteHazard(hazardId, voteValue) {
     const hazardRef = database.ref('hazardReports/' + hazardId);
     hazardRef.transaction(hazard => {
@@ -36,25 +35,44 @@ function voteHazard(hazardId, voteValue) {
     });
 }
 
+// "Is it solved?" function
+function markSolved(hazardId) {
+    const hazardRef = database.ref('hazardReports/' + hazardId);
+    hazardRef.transaction(hazard => {
+        if (hazard) {
+            hazard.solved = (hazard.solved || 0) + 1;
+            // Remove if solved count exceeds 5
+            if (hazard.solved > 5) {
+                return null;
+            }
+        }
+        return hazard;
+    }, (error, committed, snapshot) => {
+        if (error) {
+            alert("Marking as solved failed: " + error.message);
+            console.error(error);
+        }
+    });
+}
 
+// Listen for changes and update UI
 reportsRef.on('value', snapshot => {
     const reports = [];
     snapshot.forEach(childSnapshot => {
         const report = childSnapshot.val();
-        report.id = childSnapshot.key; // Add this line!
+        report.id = childSnapshot.key;
         reports.push(report);
     });
     displayReports(reports);
 });
-
 
 // Function to display reports
 function displayReports(reports) {
     const container = document.getElementById('reports-container');
     container.innerHTML = '';
 
-    // Sort by upvotes (descending)
-    reports.sort((a, b) => (b.upvotes || 0) - (a.upvotes || 0));
+    // Sort by net votes (upvotes - downvotes) descending
+    reports.sort((a, b) => ((b.upvotes || 0) - (b.downvotes || 0)) - ((a.upvotes || 0) - (a.downvotes || 0)));
 
     reports.forEach(report => {
         const reportCard = document.createElement('div');
@@ -67,7 +85,15 @@ function displayReports(reports) {
         const upvoteBtn = document.createElement('button');
         upvoteBtn.className = 'vote-btn upvote-btn';
         upvoteBtn.innerHTML = '▲';
-        upvoteBtn.onclick = () => voteHazard(report.id, 1);
+        upvoteBtn.onclick = () => {
+            voteHazard(report.id, 1);
+            upvoteBtn.disabled = true;
+            downvoteBtn.disabled = true;
+            setTimeout(() => {
+                upvoteBtn.disabled = false;
+                downvoteBtn.disabled = false;
+            }, 1000);
+        };
 
         const upvoteCount = document.createElement('span');
         upvoteCount.className = 'vote-count upvote-count';
@@ -76,7 +102,15 @@ function displayReports(reports) {
         const downvoteBtn = document.createElement('button');
         downvoteBtn.className = 'vote-btn downvote-btn';
         downvoteBtn.innerHTML = '▼';
-        downvoteBtn.onclick = () => voteHazard(report.id, -1);
+        downvoteBtn.onclick = () => {
+            voteHazard(report.id, -1);
+            upvoteBtn.disabled = true;
+            downvoteBtn.disabled = true;
+            setTimeout(() => {
+                upvoteBtn.disabled = false;
+                downvoteBtn.disabled = false;
+            }, 1000);
+        };
 
         const downvoteCount = document.createElement('span');
         downvoteCount.className = 'vote-count downvote-count';
@@ -88,6 +122,25 @@ function displayReports(reports) {
         voteSection.appendChild(downvoteCount);
 
         reportCard.appendChild(voteSection);
+
+        // --- Solved Section ---
+        const solvedSection = document.createElement('div');
+        solvedSection.className = 'solved-section';
+
+        const solvedBtn = document.createElement('button');
+        solvedBtn.className = 'solved-btn';
+        solvedBtn.innerHTML = '✔ Is it solved?';
+
+        const solvedCount = document.createElement('span');
+        solvedCount.className = 'solved-count';
+        solvedCount.textContent = report.solved || 0;
+
+        solvedBtn.onclick = () => markSolved(report.id);
+
+        solvedSection.appendChild(solvedBtn);
+        solvedSection.appendChild(solvedCount);
+
+        reportCard.appendChild(solvedSection);
 
         // Report content
         const content = document.createElement('div');
@@ -113,10 +166,11 @@ function displayReports(reports) {
     });
 }
 
- const sidebar = document.getElementById('sidebar');
- const toggleBtn = document.getElementById('toggle-btn');
+// Sidebar toggle logic
+const sidebar = document.getElementById('sidebar');
+const toggleBtn = document.getElementById('toggle-btn');
 
- toggleBtn.addEventListener('click', () => {
-  sidebar.classList.toggle('collapsed');
-  console.log('Toggle button clicked');
- });
+toggleBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('collapsed');
+    console.log('Toggle button clicked');
+});

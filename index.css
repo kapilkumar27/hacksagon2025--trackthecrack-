@@ -1,7 +1,7 @@
 .navbar {
     display: flex;
     justify-content: space-between;
-    align-items: first baseline;
+    align-items: center;
     margin-top: 0;
     margin-left: 0;
     padding: 0px 0px;
@@ -38,25 +38,98 @@ button:hover {
 #reports-container {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 20px;
+    gap: 28px;
+    padding: 28px;
 }
 
 .report-card {
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
-    background: #f1efec;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    padding: 20px;
-    position: relative;
+    background: #f9f8f6;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 24px 32px;
+    margin-bottom: 0;
+    transition: box-shadow 0.2s;
 }
+
 .report-card:hover{
-    transform: translateY(-5px);
-    box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+    transform: translateY(-4px);
+}
+
+.vote-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+    margin-right: 28px;
+    margin-top: 0;
+    background: #f4f4f4;
+    border-radius: 12px;
+    padding: 12px 0 16px 0;
+}
+
+.vote-btn {
+    background: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    font-size: 1.3rem;
+    color: #555;
+    margin: 2px 0;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.vote-btn:hover{
+    background-color: #e0e0e0;
+    color: #222;
+}
+
+.vote-count {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #444;
+    margin: 2px 0 8px 0;
+    min-height: 20px;
+}
+
+.solved-btn {
+    background: #13c113;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 14px;
+    margin-top: 14px;
+    margin-bottom: 3px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 120px;
+}
+.solved-btn:hover {
+    background: #0e990e;
+}
+.solved-count {
+    font-size: 1.1rem;
+    color: #0e990e;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.solved-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 0;
 }
 
 .report-content {
@@ -71,7 +144,7 @@ button:hover {
 }
 .report-content p {
     margin: 4px 0;
-    font-size: 0.95rem;
+    font-size: 0.97rem;
     color: #555;
 }
 
@@ -94,40 +167,34 @@ button:hover {
     border-radius: 10px;
     object-fit: cover;
     flex-shrink: 0;
+    margin-left: 18px;
+    background: #fff;
+    border: 1px solid #ececec;
 }
 
-.vote-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-width: 40px;
-    margin-right: 18px;
-    margin-top: 8px;
-}
-.vote-btn {
-    background: #f4f4f4;
-    border: none;
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    font-size: 1.2rem;
-    color: black;
-    margin: 2px 0;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-    outline: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.vote-btn:hover{
-    background-color: grey;
-}
-.vote-count {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: black;
-    margin: 2px 0;
+/* Responsive for mobile */
+@media (max-width: 700px) {
+    .report-card {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 14px 10px;
+    }
+    .vote-section {
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-bottom: 12px;
+        margin-right: 0;
+        min-width: 0;
+        padding: 8px 0;
+    }
+    .solved-btn {
+        width: auto;
+        margin: 0 0 0 8px;
+    }
+    .report-image {
+        width: 100%;
+        height: 160px;
+        margin-left: 0;
+        margin-top: 12px;
+    }
 }
