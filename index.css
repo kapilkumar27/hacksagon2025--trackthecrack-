@@ -7,6 +7,10 @@
     padding: 0px 0px;
     border-radius: 25px;
 }
+.nav-brand {
+    font-weight: bolder;
+    font-size: 20px;
+}
 .search-input{
     padding: 8px 12px;
     border-radius: 20px;
