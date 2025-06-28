@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: #f0f2f5;
+    background-color: #d4c9be;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,19 +15,19 @@ body {
 
 .container {
     width: 350px;
-    background-color: #fff;
+    background-color: #f1efec;
     padding: 30px 25px;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-.toggle-buttons {
+.form-toggle {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
-.toggle-buttons button {
+.form-toggle button {
     flex: 1;
     padding: 10px;
     border: none;
@@ -38,7 +38,7 @@ body {
     transition: background-color 0.3s;
 }
 
-.toggle-buttons button.active {
+.form-toggle button.active {
     background-color: #4A90E2;
     color: white;
 }
