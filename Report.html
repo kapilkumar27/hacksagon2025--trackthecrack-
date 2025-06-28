@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="report.css">
     <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-database-compat.js"></script>
+    <script src="https://unpkg.com/cloudinary-core@2.11.4/cloudinary-core-shrinkwrap.min.js"></script>
 </head>
 <body>
     <aside class="sidebar">
@@ -74,9 +75,9 @@
                     <textarea name="description" id="description" rows="5" cols="30"></textarea>
                     <br><br>
 
-                    <button>Upload Photo</button>
-                    <br><br>
-                    <button>Submit</button>
+                    <label for="photo">Upload Photo:</label><br>
+                    <input type="file" id="photo" name="photo" accept="image/*"><br><br>
+                    <button type="submit">Submit</button>
                 </form>
             </div>
         </div>

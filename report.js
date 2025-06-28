@@ -14,6 +14,10 @@
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
+//cloudinary configuration
+const cloudName = 'dkmdpddh5';
+const uploadPreset = 'unsigned_preset';
+
 //form submission 
 const reportForm = document.querySelector('.report-form');
 reportForm.addEventListener('submit', function(event) {
@@ -22,17 +26,47 @@ reportForm.addEventListener('submit', function(event) {
   const location = document.getElementById('location').value;
   const hazard = document.getElementById('hazard').value;
   const description = document.getElementById('description').value;
+  const photoFile = document.getElementById('photo').files[0];
 
+  //check if there is no photo
+  if (!photoFile) {
+    alert('Please upload a photo to submit the report.');
+    return; // Stop if no photo
+  }
+
+  //Start cloudinary upload
+  const formData = new FormData();
+  formData.append('file', photoFile);
+  formData.append('upload_preset', uploadPreset);
+
+  fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json())
+  .then(result => {
+    const imageUrl = result.secure_url;
+    submitReport(location, hazard, description, imageUrl);
+  })
+  .catch(error => {
+    console.error('Error uploading image:', error);
+    alert('Failed to upload image, but report was submitted.');
+    submitReport(location, hazard, description, null);
+  });
+});
+
+function submitReport(location, hazard, description, imageUrl) {
   const newReportRef = database.ref('hazardReports').push();
   newReportRef.set({
     location: location,
     hazardType: hazard,
     description: description,
+    imageUrl: imageUrl || null // store the cloudinary url if available or null
   })
   .then(() => {
-    alert('Report submitted successfully!');//alert msg after submitting the form
-    reportForm.reset();//reset the form after submitting the details
-  })
-});
+    alert('Report submitted successfully!');
+    reportForm.reset();
+  });
+}
 
 
