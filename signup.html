@@ -35,14 +35,14 @@
         const signinForm = document.getElementById('signin-form');
         const signupForm = document.getElementById('signup-form');
 
-        signinBtn.addEventListener('click, () => {
+        signinBtn.addEventListener('click', () => {
             signinForm.classList.add('active-form');
             signupForm.classList.remove('active-form');
             signupBtn.classList.add('active');
             signinBtn.classList.remove('active');
         });
 
-         signupBtn.addEventListener('click, () => {
+         signupBtn.addEventListener('click', () => {
             signupForm.classList.add('active-form');
             signinForm.classList.remove('active-form');
             signupBtn.classList.add('active');
