@@ -1,88 +1,81 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Nunito", Verdana, Geneva, Tahoma, sans-serif;
-}
-
-body{
-    min-height: 100vh;
-    background: #eaefef;
-    color: #333446;
-    display: grid;
-    grid-template-columns: auto;
-}
-
-main {
-    padding: 30px;
-    margin-left: 240px;
-    max-width: 1000px;
-    box-sizing: border-box;
-}
-
-.sidebar {
-    position: fixed;
-    top: 0; left: 0;
+.container {
+    width: 100%;
     height: 100%;
-    width: 240px;
-    background: #b8cfce;
-    padding: 25px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.sidebar-header img {
-    width: 200px;
-    border-radius: 50%;
-}
-.sider-header{
-    display: flex;
-    justify-content: center;
-}
-.sidebar svg {
-    fill: #333446;
+    margin: 5px auto;
+    padding: 30px;
+    background: #f1efec;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgb(0,0,0/0.1);
 }
 
-ul li a {
-    display: flex;
-    align-items: center;
-    gap: 0 10px;
-    color: #333446;
-    font-weight: 700;
-    padding: 15px 5px;
-    white-space: nowrap;
-    text-decoration: none;
+form {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 5px auto;
 }
-ul {
-    list-style: none;
+form label {
+    display:block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+form button {
+    padding: 10px 20px;
+    background: #ec0e0efe;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease-in-out;
+}
+form button:hover {
+    background: #f92828da;
+}
+
+#photo {
+    display: none;
+}
+.upload-wrapper {
+    text-align: center;
     margin-top: 15px;
+    padding: 20px;
+    border: 2px #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    transform: all 0.3s ease;
 }
-ul li a:hover {
-    background: #eaefef;
-    color: #242530;
-    border-radius: 20px;
+.upload-wrapper:hover {
+    background-color: #eef6ff;
+    border-color: #002955e8;
 }
-.sidebar-footer {
-    margin-top: auto;
-    padding-top: 15px;
+
+/*custom upload button*/
+.upload-label {
+    display: inline-block;
+    padding: 10px 25px;
+    background-color: #002955e8;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
 }
-.sidebar-footer a{
-    display: flex;
-    align-items: center;
-    color: #333446;
-    font-weight: 800;
-    font-size: larger;
-    padding: 15px 5px;
-    white-space: nowrap;
-    text-decoration: none;
-    gap: 0 20px;
+.upload-label:hover {
+    background-color: #0056b3;
 }
-.sidebar-footer svg{
-    width: 30px;
-    height: 30px;
-    margin-right: 0px;
-    vertical-align: middle;
+.file-name{
+    margin-top: 10px;
+    color: #333;
+    font-size: 13px;
+    font-style: italic;
 }
