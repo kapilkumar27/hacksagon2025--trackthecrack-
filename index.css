@@ -102,7 +102,7 @@ button:hover {
 }
 
 .solved-btn {
-    background: #13c113;
+    background: rgb(0, 179, 255);
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -115,11 +115,11 @@ button:hover {
     width: 120px;
 }
 .solved-btn:hover {
-    background: #0e990e;
+    background: rgb(0, 187, 255);
 }
 .solved-count {
     font-size: 1.1rem;
-    color: #0e990e;
+    color: grey;
     font-weight: bold;
     margin-bottom: 8px;
 }
